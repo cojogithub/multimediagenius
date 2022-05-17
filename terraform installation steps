@@ -1,0 +1,29 @@
+Download Terraform:
+
+wget https://releases.hashicorp.com/terraform/1.1.4/terraform_1.1.4_linux_amd64.zip
+
+Unzip:
+unzip terraform_1.1.4_linux_amd64.zip
+
+Set Terraform Path:
+
+echo $"export PATH=\$PATH:$(pwd)" >> ~/.bash_profile
+
+source ~/.bash_profile
+
+mkdir terraform-work
+
+cd mkdir terraform-work
+
+vim ec2.tf
+
+provider "aws" {
+  access_key = "AKIA3BLJ54BJWVCB4DEQ"
+  secret_key = "fYXEVehWx0cJO31oJpq5mHqzIVw/qcLJAyLFG0Vw"
+  region     = "us-east-1"
+}
+
+resource "aws_instance" "example" {
+  ami           = "ami-2757f631"
+  instance_type = "t2.micro"
+}
